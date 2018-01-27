@@ -1,0 +1,85 @@
+
+  <view class="H-title">套餐：<text>腾讯大王卡</text></view>
+  <view class="H-text">根据国家实名制要求，请准确提供身份证信息</view>
+<view class="main">
+  <form bindsubmit="formSubmit">
+
+    <view class="list">
+      <view class="input">
+        <view><image class='image1' src="../img/people.png"></image></view>
+        <view></view>
+        <view>姓名</view>
+        <view><input type="text" placeholder="请输入身份证件姓名" name="name"/></view>
+      </view>
+      <view class="input">
+        <view><image class='image2' src="../img/shenfen.png"></image></view>
+        <view></view>
+        <view>身份证</view>
+        <view><input type="text" placeholder="请输入身份证号" name="ID" wx:if="{{!modal}}"/></view>
+      </view>
+      <view class="input">
+        <view><image class='image3'src="../img/phone.png"></image></view>
+        <view></view>
+        <view>联系电话</view>
+        <view><input type="text" placeholder="请输入联系电话" name="phone" wx:if="{{!modal}}"/></view>
+      </view>
+      <view class="input">
+        <view><image class='image2'src="../img/card.png"></image></view>
+        <view></view>
+        <view>入网电话</view>
+        <view><input type="text" value="{{code}}" placeholder="请输入入网号码" name="inset_phone" class="short_input" wx:if="{{!modal}}"/><image  class="search" src="../img/search.png" bindtap="select"></image></view>
+      </view>
+      <view class="input">
+        <view><image class='image2'src="../img/card.png"></image></view>
+        <view></view>
+        <view>成卡电话</view>
+        <view><input type="text" placeholder="请输入成卡号码" value="{{cd_card}}" name="cd_card" wx:if="{{!modal}}"/></view>
+      </view>
+      <view class="input">
+        <view><image class='image1'src="../img/people.png"></image></view>
+        <view></view>
+        <view>收货地址</view>
+        <view><input  wx:if="{{!modal}}" type="text" placeholder="请输入收货地址" name="add"/></view>
+      </view>
+    </view>
+    <view class="agreement">
+      <view class="check" catchtap="check"><image wx:if='{{check}}' src="../img/勾.png"></image></view>
+      <view class="agr_text">
+        我已阅读并同意<text bindtap="agreement">《客户入网服务协议》</text>
+      </view>
+    </view>
+    <button formType="submit" class="save {{check?'':'disable'}}">立即领取</button>
+    <view class="hint">
+      <view class="h_image"><image src="../img/laba.png"></image></view>
+      <view class="h_word">
+        请保持联系号码畅通，我们可能随时与您联系。 本次为阶段性优惠活动，数量有限，联系电话无人接听或恶意下单的情况，将不予发货。
+      </view>
+    </view>
+  </form>
+</view>
+<view class="fix" wx:if="{{agreement}}">
+  <!--<view class="del">X</view>-->
+  <image src="../img/word.png"></image>
+  <button class="fix_button" bindtap="read">同意</button>
+</view>
+
+  <view class="all_Modal" wx:if="{{modal}}">
+    <view class="modal" >
+      <view class="modal_select"><text bindtap="rest">重选</text><text bindtap="hide">取消</text></view>
+      <view class="item">
+        <block wx:for="{{num}}" wx:for-item="item" wx:for-index="index">
+          <view bindtap="click" data-type="{{index}}">{{item.code}}{{item}}</view>
+        </block>
+      </view>
+
+      <!--<view class="item">-->
+      <!--<view>1</view>-->
+      <!--<view>2</view>-->
+      <!--<view>3</view>-->
+      <!--<view>4</view>-->
+      <!--</view>-->
+
+    </view>
+  </view>
+
+

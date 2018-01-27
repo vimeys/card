@@ -1,0 +1,6 @@
+<!--pages/text/text.wxml-->
+<view class="fix">
+    <!--<view class="del">X</view>-->
+    <image src="../img/word.png"></image>
+    <buttom class="fix_buttom">同意</buttom>
+</view>
