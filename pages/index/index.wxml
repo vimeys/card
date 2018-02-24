@@ -1,8 +1,8 @@
 
-  <view class="H-title">套餐：<text>腾讯大王卡</text></view>
+  <view class="H-title">套餐：<text>{{cardName[index]}}</text></view>
   <view class="H-text">根据国家实名制要求，请准确提供身份证信息</view>
 <view class="main">
-  <form bindsubmit="formSubmit">
+  <form bindsubmit="formSubmit" bindreset="formReset">
 
     <view class="list">
       <view class="input">
@@ -15,40 +15,50 @@
         <view><image class='image2' src="../img/shenfen.png"></image></view>
         <view></view>
         <view>身份证</view>
-        <view><input type="text" placeholder="请输入身份证号" name="ID" wx:if="{{!modal}}"/></view>
+        <view><input type="text" placeholder="请输入身份证号" name="ID" hidden="{{modal}}"/></view>
       </view>
       <view class="input">
         <view><image class='image3'src="../img/phone.png"></image></view>
         <view></view>
         <view>联系电话</view>
-        <view><input type="text" placeholder="请输入联系电话" name="phone" wx:if="{{!modal}}"/></view>
+        <view><input type="text" placeholder="请输入联系电话" name="phone" hidden="{{modal}}" /></view>
       </view>
       <view class="input">
         <view><image class='image2'src="../img/card.png"></image></view>
         <view></view>
         <view>入网电话</view>
-        <view><input type="text" value="{{code}}" placeholder="请输入入网号码" name="inset_phone" class="short_input" wx:if="{{!modal}}"/><image  class="search" src="../img/search.png" bindtap="select"></image></view>
+        <view><input disabled="disabled" type="text" value="{{code}}" placeholder="请输入入网号码" name="inset_phone" class="short_input" hidden="{{modal}}"/><image  class="search" src="../img/search.png" bindtap="select"></image></view>
       </view>
       <view class="input">
         <view><image class='image2'src="../img/card.png"></image></view>
         <view></view>
         <view>成卡电话</view>
-        <view><input type="text" placeholder="请输入成卡号码" value="{{cd_card}}" name="cd_card" wx:if="{{!modal}}"/></view>
+        <view><input disabled='disabled' type="text" placeholder="请输入成卡号码" value="{{cd_card}}" name="cd_card" wx:if="{{!modal}}"/></view>
       </view>
       <view class="input">
-        <view><image class='image1'src="../img/people.png"></image></view>
+        <view><image class='image1'src="../img/combo.png"></image></view>
+        <view></view>
+        <view>套餐选择</view>
+        <view> <picker class="short_input" bindchange="bindPickerChange" value="{{index}}" range="{{cardName}}">
+          <view class="picker">
+            {{cardName[index]}}
+          </view>
+        </picker><image  class="search" src="../img/warning.png" bindtap="combo"></image></view>
+      </view>
+      <view class="input">
+        <view><image class='image1'src="../img/address.png"></image></view>
         <view></view>
         <view>收货地址</view>
-        <view><input  wx:if="{{!modal}}" type="text" placeholder="请输入收货地址" name="add"/></view>
+        <view><input  hidden="{{modal}}" type="text" placeholder="请输入收货地址" name="add"/></view>
       </view>
     </view>
     <view class="agreement">
-      <view class="check" catchtap="check"><image wx:if='{{check}}' src="../img/勾.png"></image></view>
+      <view class="check" catchtap="check"><image wx:if='{{check}}' src="../img/nike.png"></image></view>
       <view class="agr_text">
         我已阅读并同意<text bindtap="agreement">《客户入网服务协议》</text>
       </view>
     </view>
-    <button formType="submit" class="save {{check?'':'disable'}}">立即领取</button>
+    <button formType="submit" class="save {{check?'':'disable'}}" >立即领取</button>
     <view class="hint">
       <view class="h_image"><image src="../img/laba.png"></image></view>
       <view class="h_word">
@@ -62,24 +72,21 @@
   <image src="../img/word.png"></image>
   <button class="fix_button" bindtap="read">同意</button>
 </view>
-
+<view class="fix_combo" hidden="{{!combo}}">
+    <image bindtap="comboHide" src="{{goodsImage[index]}}" style="height:{{height[index].height}}rpx"></image>
+</view>
+  <view class="fix_btn" bindtap="hidden" hidden="{{!combo}}">确定</view>
+  <view class="fix_btn {{index==0?'blue':''}}" bindtap="hidden" hidden="{{!combo}}">确定</view>
   <view class="all_Modal" wx:if="{{modal}}">
     <view class="modal" >
       <view class="modal_select"><text bindtap="rest">重选</text><text bindtap="hide">取消</text></view>
       <view class="item">
         <block wx:for="{{num}}" wx:for-item="item" wx:for-index="index">
-          <view bindtap="click" data-type="{{index}}">{{item.code}}{{item}}</view>
+          <view bindtap="click" data-type="{{index}}">{{item.code}}</view>
         </block>
       </view>
-
-      <!--<view class="item">-->
-      <!--<view>1</view>-->
-      <!--<view>2</view>-->
-      <!--<view>3</view>-->
-      <!--<view>4</view>-->
-      <!--</view>-->
-
     </view>
   </view>
+   <!--<web-view src="https://mp.weixin.qq.com/"></web-view> -->
 
 

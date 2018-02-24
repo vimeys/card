@@ -1,0 +1,12 @@
+<!--pages/card/card.wxml-->
+<!--<text>pages/card/card.wxml</text>-->
+<view class="bg"><image src="../img/bg.png"></image></view>
+<view class="content">
+    <view class="cardName">{{cardName}}</view>
+    <view>
+        <view><image  bindtap='change' class="arrLeft" src="../img/arrawRight.png"></image></view>
+        <view><image  class="logo" src="../img/cardlogo{{num}}.png"></image></view>
+        <view><image bindtap="change" class="arrRight" src="../img/arrawRight.png"></image></view>
+    </view>
+    <view class="btn" bindtap="click">立即申请</view>
+</view>

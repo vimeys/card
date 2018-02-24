@@ -33,7 +33,7 @@
   padding: 10rpx 0;
   margin-top: 20rpx;
 }
-.input view:first-child{
+.input>view:first-child{
   width: 100rpx;
   text-align: center;
   display: flex;
@@ -59,7 +59,7 @@
   height: 40rpx;
   top:5rpx;
 }
-.input view:last-child{
+.input>view:last-child{
   position: relative;
   flex: 1;
   font-size: 24rpx;
@@ -97,7 +97,9 @@
   width: 28rpx;
   height: 28rpx;
 }
-
+.Zindex{
+  z-index: 1;
+}
 .agr_text{
   margin: 30rpx 20rpx;
   font-size: 24rpx;
@@ -147,11 +149,34 @@ button{
 }
 .fix image{
   margin: 0 auto;
-  width: 98%;
+  width: 96%;
+  display: block;
   height: 2380rpx;
   border: 1px solid #FD7A00;
 }
+.fix_combo{
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  position: absolute;
+  top:0;
+  left: 0;
+  /*display: flex;*/
+  /*flex-direction:column;*/
+  /*justify-content: center;*/
+  /*position: absolute;*/
+  /*top:0;*/
+  /*left: 0;*/
+}
+.fix_combo image{
+  margin: 0 auto;
+  width: 100%;
+  display: block;
+  /*height: 2380rpx;*/
+}
 .fix_button{
+  margin-bottom: 30rpx;
+  margin-top: 30rpx;
   background-color: #FD7A00;
 }
 .modal{
@@ -174,7 +199,6 @@ input{
   top: 0;
   left: 0;
   background: rgba(0,0,0,.1);
-
 }
 .modal_select{
 
@@ -211,4 +235,23 @@ input{
   background: #fff;
   border: 1rpx solid #FD7A00;
 }
-
+.picker{
+    color:#666;
+  height: 1.4rem;
+  line-height: 1.4rem;
+}
+.fix_btn{
+  position: fixed;
+  z-index: 1000;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  color:#fff;
+  background: #FD7A00;
+}
+.blue{
+  background:rgb(59,152,209);
+}
